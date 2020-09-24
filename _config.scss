@@ -1,0 +1,25 @@
+/*** _config.scss ***/
+
+// $ 设置变量
+$font-stack: Arial, Helvetica, sans-serif;
+$light-color: #f4f4f4;
+$primary-color: #0e6cff;
+// $primary-color: #e0ffff;
+$secondary-color: #ff8700;
+
+// 设置 set-text-color 函数
+@function set-text-color($color) {
+  @if (lightness($color) > 70) {
+    @return #333;
+  } @else {
+    @return #fff;
+  }
+}
+
+// 设置 set-background 的 mixin
+// mixin 把多条属性打包，跟函数差不多，但是不返回值.
+@mixin set-background($color) {
+  background-color: $color;
+  // 使用 set-text-color 函数
+  color: set-text-color($color);
+}
